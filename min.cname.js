@@ -4,18 +4,18 @@ class Product
 {
     constructor()
     {
-		this.hasCanvas = false;
-        this.canvas = null; //$("canvas").get(0);
-        this.ctx = null; //this.canvas.getContext("2d");
+	this.hasCanvas = false;
+        this.canvas = null; 
+        this.ctx = null; 
         this.h = 200;
         this.w = 400;
         this.svg = null;
         this.ns = "http://www.w3.org/2000/svg";
         this._title = $(document).find("title").text();
 		
-		this.txt = $('*[placeholder="Max 10 characters with first in Caps"]');
-		this.selOne = $("select").get(0);
-		this.selTwo = $("select").get(1);
+	this.txt = $("*[placeholder='Max 10 characters with first in Caps']");
+	this.selOne = $("select").get(0);
+	this.selTwo = $("select").get(1);
     }
     
     test() 
