@@ -79,6 +79,7 @@ class Product
 	
     loadSvg()
     {
+	    this.txt.title="";
 		this.hasCanvas = $("#canvas").length > 0;
 		if(this.hasCanvas)
 		{
