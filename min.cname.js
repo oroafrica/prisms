@@ -79,7 +79,7 @@ class Product
 	
     loadSvg()
     {
-	    this.txt.title="";
+	    this.txt.placeholder="";
 		this.hasCanvas = $("#canvas").length > 0;
 		if(this.hasCanvas)
 		{
@@ -185,7 +185,7 @@ class Product
 	{
 		try
 		{
-			var alloy = {0:"#b4b4b4", 1:"#bbb100", 2:"#e0afbc", 3:"#a3a3a3"};
+			var alloy = {0:"#b4b4b4",1:"#b4b4b4", 2:"#bbb100", 3:"#e0afbc", 4:"#a3a3a3"};
 			let _target = this.svg.getElementsByTagName("text")[0];
 			_target.style.fill = alloy[selTwo];
 		}
