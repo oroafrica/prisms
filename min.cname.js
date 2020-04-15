@@ -33,22 +33,22 @@ class Product
     
     clsCanvas()
     {
-		try
-		{
-			this.canvas = $("#canvas").get(0);
-			this.ctx = this.canvas.getContext("2d");
-			this.ctx.clearRect(0, 0, this.w, this.h);
-		}
-		catch(e)
-		{
-			alert(e);
-		}	
+	try
+	{
+		this.canvas = $("#canvas").get(0);
+		this.ctx = this.canvas.getContext("2d");
+		this.ctx.clearRect(0, 0, this.w, this.h);
+	}
+	catch(e)
+	{
+		alert(e);
+	}	
     }
     
     clsInput()
     {
-        let s = $("input:text").toArray();
-        s.forEach((i)=> i.value = "");
+		let s = $("input:text").toArray();
+		s.forEach((i)=> i.value = "");
 		console.log("clear input");
     }
     
@@ -79,22 +79,24 @@ class Product
 	
     loadSvg()
     {
-	    this.txt.placeholder="";
-		this.hasCanvas = $("#canvas").length > 0;
-		if(this.hasCanvas)
+	this.hasCanvas = $("#canvas").length > 0;
+	if(this.hasCanvas)
+	{
+		try
 		{
-			try
-			{
-				this.canvas = $("canvas").get(0);
-				this.ctx = this.canvas.getContext("2d");
+			this.canvas = $("canvas").get(0);
+			this.ctx = this.canvas.getContext("2d");
 
-				var msg = new Item().svg();
-				var parser = new DOMParser();
-				
-				this.svg = parser.parseFromString(msg,"image/svg+xml");
+			var msg = new Item().svg();
+			var parser = new DOMParser();
 
-			}catch(e){console.log("load err: " +e);};
+			this.svg = parser.parseFromString(msg,"image/svg+xml");
 		}
+		catch(e)
+		{
+			console.log("load err: " +e);
+		};
+	}
         
     }
 
@@ -123,7 +125,12 @@ class Product
             {
                 _a = String.fromCharCode(inputName.substring(0,1).charCodeAt(0) + x);
             }
-
+	     
+	     if(inputName === "Max 10 characters with first in Caps")
+	     {
+		return;
+	     }
+		
             _b = "";
             if(inputName.length > 1)
             {
@@ -141,17 +148,13 @@ class Product
             _body = document.createElementNS(this.ns,"tspan");
             _suffix = document.createElementNS(this.ns,"tspan"); 
            
-           _prefix.textContent = _a;
-           _body.textContent = _b;
-           _suffix.textContent = _c;
-
-            // svgDoc.getElementById("txt1").appendChild(_prefix);
-            // svgDoc.getElementById("txt1").appendChild(_body);
-            // svgDoc.getElementById("txt1").appendChild(_suffix);
-			
-            _target.appendChild(_prefix);
-            _target.appendChild(_body);
-            _target.appendChild(_suffix);
+	    _prefix.textContent = _a;
+	    _body.textContent = _b;
+	    _suffix.textContent = _c;
+		
+	    _target.appendChild(_prefix);
+	    _target.appendChild(_body);
+	    _target.appendChild(_suffix);
         } 
         catch (e) 
         {
@@ -185,7 +188,7 @@ class Product
 	{
 		try
 		{
-			var alloy = {0:"#b4b4b4",1:"#b4b4b4", 2:"#bbb100", 3:"#e0afbc", 4:"#a3a3a3"};
+			var alloy = {0:"#b4b4b4", 1:"#bbb100", 2:"#e0afbc", 3:"#a3a3a3"};//{0:"#b4b4b4",1:"#b4b4b4", 2:"#bbb100", 3:"#e0afbc", 4:"#a3a3a3"};
 			let _target = this.svg.getElementsByTagName("text")[0];
 			_target.style.fill = alloy[selTwo];
 		}
@@ -208,13 +211,12 @@ class Product
                         this.resetCanvas();//$("#txtMotif").find(":selected").val();//console.log(evt.keyCode);//alert(evt.keyCode );
                     }**/
 					
-                    this.resetCanvas();
-                    //update text
-                    // this.textFactory(this.svg, $("#txtOne").val(), $("#txtMotif").find(":selected").val());
-                    this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-					this.alloyColor($(this.selTwo).prop("selectedIndex"));
-                    //paint canvas
-                    this.drawSvg(this.svg);
+                    	this.resetCanvas();
+                    	//update text
+                    	this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+			this.alloyColor($(this.selTwo).prop("selectedIndex"));
+                    	//paint canvas
+                    	this.drawSvg(this.svg);
                 } 
                 catch (e) 
                 {
@@ -244,16 +246,15 @@ class Product
     
     init()
     {
-		if($("#canvas").length > 0)
-		{
-			this.loadSvg();
-			this.render();
-		}
-		else
-		{
-			console.log("No Canvas Found/Contact product.js vendor");
-		}
-       
+	if($("#canvas").length > 0)
+	{
+		this.loadSvg();
+		this.render();
+	}
+	else
+	{
+		console.log("No Canvas Found/Contact product.js vendor");
+	}      
     }
 }
 
