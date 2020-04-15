@@ -126,7 +126,7 @@ class Product
                 _a = String.fromCharCode(inputName.substring(0,1).charCodeAt(0) + x);
             }
 	     
-	     if(inputName === "Max 10 characters with first in Caps")
+	     if(inputName === "Max10characterswithfirstinCaps")
 	     {
 		return;
 	     }
@@ -188,7 +188,7 @@ class Product
 	{
 		try
 		{
-			var alloy = {0:"#b4b4b4", 1:"#bbb100", 2:"#e0afbc", 3:"#a3a3a3"};//{0:"#b4b4b4",1:"#b4b4b4", 2:"#bbb100", 3:"#e0afbc", 4:"#a3a3a3"};
+			var alloy = {0:"#b4b4b4",1:"#b4b4b4", 2:"#bbb100", 3:"#e0afbc", 4:"#a3a3a3"}; //{0:"#b4b4b4", 1:"#bbb100", 2:"#e0afbc", 3:"#a3a3a3"};
 			let _target = this.svg.getElementsByTagName("text")[0];
 			_target.style.fill = alloy[selTwo];
 		}
@@ -231,11 +231,11 @@ class Product
                     // {
                         // evt.altCode ;//$("#txtMotif").find(":selected").val();//console.log(evt.keyCode);//alert(evt.keyCode );
                     // }
-                    this.resetCanvas();
-					this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-					this.alloyColor($(this.selTwo).prop("selectedIndex"));
-                    // //paint canvas
-                    this.drawSvg(this.svg);
+                    	this.resetCanvas();
+			this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+			this.alloyColor($(this.selTwo).prop("selectedIndex"));
+		   	 // //paint canvas
+		    	this.drawSvg(this.svg);
                 } 
                 catch (e) 
                 {
