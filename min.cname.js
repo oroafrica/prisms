@@ -8,14 +8,14 @@ class Product
         this.canvas = null;
         this.ctx = null; 
         this.w = 400;
-	this.h = 150;
+				this.h = 150;
         this.svg = null;
         this.ns = "http://www.w3.org/2000/svg";
         this._title = $(document).find("title").text();
 		
-	this.txt = null;
-	this.selOne = null;
-	this.selTwo = null;
+				this.txt = null;
+				this.selOne = null;
+				this.selTwo = null;
     }
 
     test(){console.log("Product.class");}
@@ -236,7 +236,7 @@ class Product
 		                //this.alloyColor($(this.selTwo).prop("selectedIndex"));
 									
 									  this.textFactory(this.svg, "sarah",0);
-		                this.alloyColor(2);
+		                this.alloyColor($(this.selTwo).prop("selectedIndex"));
 									
                     //paint canvas
                     this.drawSvg(this.svg);
