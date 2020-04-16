@@ -102,7 +102,7 @@ class Product
 			alert(e);
 		}	
     }
-    
+    /**
     clsInput()
     {
         let s = $("input:text").toArray();
@@ -115,7 +115,7 @@ class Product
         let s = $("select option").toArray();
         s.forEach(()=> $(s)[0].selected = true);
     }
-    
+    **/
 	resetCanvas()
     {
         if($(this.txt).val() === "")
@@ -311,7 +311,7 @@ class Item
 		
 		.concat("</defs>")
 		
-		.concat("<g><text id='txt1' style='font-size:25;stroke:none;text-anchor:middle;font-family:wz_bname' filter='url(#Bevel)' fill='#bbb100' transform='matrix(1 0 0 1 200 90)' ></text></g>")
+		.concat("<g><text id='txt1' style='font-size:25;stroke:none;text-anchor:middle;font-family:wz_bname' filter='url(#Bevel)' fill='#bbb100' transform='matrix(1 0 0 1 200 90)' >Cara</text></g>")
 		.concat("</svg>");
 	}	
 }
