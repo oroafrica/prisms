@@ -4,85 +4,64 @@ class Product
 {
     constructor()
     {
-		this.hasCanvas = false;
-        this.canvas = null; //$("canvas").get(0);
-        this.ctx = null; //this.canvas.getContext("2d");
+        this.hasCanvas = false;
+        this.canvas = null;
+        this.ctx = null; 
         this.w = 400;
-		this.h = 150;
+	this.h = 150;
         this.svg = null;
         this.ns = "http://www.w3.org/2000/svg";
         this._title = $(document).find("title").text();
 		
-		this.txt = $("*[title='Max 10 characters with first in Caps']");// $("input:text").get(0);
-		this.selOne = null; //$("select").get(0);
-		this.selTwo = null;//$("select").get(1);
+	this.txt = $("*[title='Max 10 characters with first in Caps']");
+	this.selOne = null;
+	this.selTwo = null;
     }
     
-	getSelAccent()
+    getSelAccent()
+    {
+        try
 	{
-		try
+	    var tgt = $('select').toArray();
+	    $.each(tgt, (index)=> 
+	    {
+		if($(tgt)[index].options[1].text === "Butterfly")
 		{
-			var tgt = $('select').toArray();
-			$.each(tgt, (index)=> 
-			{
-				if($(tgt)[index].options[1].text === "Butterfly")
-				{
-					// console.log($(tgt)[index].options[1].text);
-					this.selOne =  $(tgt)[index];
-				}	
-			});
-		}
-		catch(e)
-		{
-			console.log(e);
-		}
+			console.log($(tgt)[index].options[1].text);
+			this.selOne =  $(tgt)[index];
+		}	
+	 });
+     }
+	catch(e)
+	{
+	    console.log(e);
 	}
+     }
 	
 	getSelAlloy()
 	{
-		try
-		{
-			var tgt = $('select').toArray();
-			$.each(tgt, (index)=> 
-			{
-				if($(tgt)[index].options[1].text === "Silver")
-				{
-					this.selTwo =  $(tgt)[index];
-				}	
-			});
-		}
-		catch(e)
-		{
-			console.log(e);
-		}
+	    try
+	    {
+	        var tgt = $('select').toArray();
+	        $.each(tgt, (index)=> 
+	        {
+		    if($(tgt)[index].options[1].text === "Silver")
+		     {
+			this.selTwo =  $(tgt)[index];
+		      }	
+	        });
+	     }
+	     catch(e)
+	     {
+		console.log(e);
+	      }
 	}
 	
     test() 
     {
-		
-		try
-		{
-			var tgt = $('select').toArray();
-			
-			// console.log(tgt.length);
-			// console.log($(tgt)[0].options[1].text);
-			
-			$.each(tgt, (index)=> 
-			{
-				if($(tgt)[index].options[1].text === "Butterfly")
-				{
-					console.log($(tgt)[index].options[1].text);
-				}	
-			});
-		}
-		catch(e)
-		{
-			console.log(e);
-		}
-		
-		
+		console.log("Product.class"); 
 		/**
-        console.log("Product.class"); 
+        
 		console.log($(this.txt).val());
 		this.clsInput();
 		this.clsSelect();
@@ -129,15 +108,7 @@ class Product
         }
     }
     
-	/**
-    setBackgroundImage(itemClass, img)
-    {
-        var tmp  = "images/".concat(img);
-        $(".".concat(itemClass)).css("background-image","url(".concat(tmp).concat(".png)"));
-        $(".".concat(itemClass)).css("background-repeat","no-repeat");
-        $(".".concat(itemClass)).css("background-position","center center");
-    }
-    **/
+
 	
     loadSvg()
     {
@@ -262,12 +233,8 @@ class Product
             {
                 try 
                 {
-					/**
-                    if(evt.keyCode === 18 )
-                    {
-                        this.resetCanvas();//$("#txtMotif").find(":selected").val();//console.log(evt.keyCode);//alert(evt.keyCode );
-                    }**/
-					console.log("render");
+
+					console.log($(this.txt).val());
                     this.resetCanvas();
                     //update text
                     // this.textFactory(this.svg, $("#txtOne").val(), $("#txtMotif").find(":selected").val());
