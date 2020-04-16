@@ -232,7 +232,7 @@ class Product
     render()
     {  
 // 		this.getSelAccent();
-// 		this.getSelAlloy();
+		this.getSelAlloy();
 		
         $(document)
             .on("keyup",$(this.txt),(evt)=>
@@ -245,7 +245,7 @@ class Product
                     //update text
 		    this.textFactory(this.svg, $(this.txt).val(), 0);
                     //this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-		    //this.alloyColor($(this.selTwo).prop("selectedIndex"));
+		    this.alloyColor($(this.selTwo).prop("selectedIndex"));
                     //paint canvas
                     this.drawSvg(this.svg);
                 } 
@@ -258,13 +258,9 @@ class Product
             {
                 try 
                 {
-                    // if(evt.keyCode === 18 )
-                    // {
-                        // evt.altCode ;//$("#txtMotif").find(":selected").val();//console.log(evt.keyCode);//alert(evt.keyCode );
-                    // }
                     this.resetCanvas();
-					this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-					this.alloyColor($(this.selTwo).prop("selectedIndex"));
+		    this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+		    this.alloyColor($(this.selTwo).prop("selectedIndex"));
                     // //paint canvas
                     this.drawSvg(this.svg);
                 } 
