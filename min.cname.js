@@ -110,10 +110,11 @@ class Product
 			var parser = new DOMParser();
 
 			this.svg = parser.parseFromString(msg,"image/svg+xml");
+			console.log("svg loaded");
 		}
 		catch(e)
 		{
-			console.log("loadSvg: " +e);
+			console.log("loadSvg: " + e);
 		};
 	}
         
@@ -217,6 +218,9 @@ class Product
 	
   render()
   {  
+	this.getSelAccent();
+	this.getSelAlloy();
+	  
         $(document)
             .on("keyup",$(this.txt),(evt)=>
             {
