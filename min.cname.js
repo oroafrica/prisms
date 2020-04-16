@@ -38,24 +38,25 @@ class Product
 	}
      }
 	
-	getSelAlloy()
+    getSelAlloy()
+    {
+	try
 	{
-	    try
-	    {
 	        var tgt = $('select').toArray();
 	        $.each(tgt, (index)=> 
 	        {
 		    if($(tgt)[index].options[1].text === "Silver")
 		     {
 			this.selTwo =  $(tgt)[index];
+			     console.log($(tgt)[index].options[1].text);
 		      }	
 	        });
-	     }
-	     catch(e)
-	     {
+	  }
+	  catch(e)
+	  {
 		console.log(e);
-	      }
-	}
+	   }
+    }
 	
     test() 
     {
@@ -155,7 +156,12 @@ class Product
             {
                 _a = String.fromCharCode(inputName.substring(0,1).charCodeAt(0) + x);
             }
-
+	     
+	     if(inputName === "Max10characterswithfirstinCaps")
+	     {
+		return;
+	     }
+		
             _b = "";
             if(inputName.length > 1)
             {
@@ -173,13 +179,13 @@ class Product
             _body = document.createElementNS(this.ns,"tspan");
             _suffix = document.createElementNS(this.ns,"tspan"); 
            
-           _prefix.textContent = _a;
-           _body.textContent = _b;
-           _suffix.textContent = _c;
-
-            _target.appendChild(_prefix);
-            _target.appendChild(_body);
-            _target.appendChild(_suffix);
+	    _prefix.textContent = _a;
+	    _body.textContent = _b;
+	    _suffix.textContent = _c;
+		
+	    _target.appendChild(_prefix);
+	    _target.appendChild(_body);
+	    _target.appendChild(_suffix);
         } 
         catch (e) 
         {
