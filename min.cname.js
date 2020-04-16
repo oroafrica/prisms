@@ -220,9 +220,7 @@ class Product
 	
     render()
     {           
-	        this.getInput();
-					this.getSelAccent();
-					this.getSelAlloy();
+	        
 		
         $(document)
             .on("keyup",$(this.txt),(evt)=>
@@ -271,6 +269,9 @@ class Product
     {
 		if($("#canvas").length > 0)
 		{
+			this.getInput();
+					this.getSelAccent();
+					this.getSelAlloy();
 			this.loadSvg();
 			this.render();
 		}
