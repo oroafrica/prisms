@@ -120,10 +120,10 @@ class Product
         {
 						 console.log("inputName: " + inputName);
 					
-						 if(selectEndOne === 'undefined' || selectEndOne === null)
-								selectEndOne = 0;
-						 if(inputName === 'undefined' || inputName === null)
-								inputName = "NoName";
+// 						 if(selectEndOne === 'undefined' || selectEndOne === null)
+// 								selectEndOne = 0;
+// 						 if(inputName === 'undefined' || inputName === null)
+// 								inputName = "NoName";
 		
             //suffix map
             var SUFFIX = {0:61, 1:60123, 2:60040, 3:60091};
@@ -254,7 +254,7 @@ class Product
                     // this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
 		                //this.alloyColor($(this.selTwo).prop("selectedIndex"));
 									
-		   this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));//this.textFactory(this.svg, "Anna",0);
+		   this.textFactory(this.svg, $(this.txt).val(), 0);//this.textFactory(this.svg, "Anna",0);
 		  this.alloyColor($(this.selTwo).prop("selectedIndex"));
                     // //paint canvas
                     this.drawSvg(this.svg);
