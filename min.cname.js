@@ -231,8 +231,8 @@ class Product
 	
     render()
     {  
-		this.getSelAccent();
-		this.getSelAlloy();
+// 		this.getSelAccent();
+// 		this.getSelAlloy();
 		
         $(document)
             .on("keyup",$(this.txt),(evt)=>
@@ -243,7 +243,8 @@ class Product
 					console.log($(this.txt).val());
                     this.resetCanvas();
                     //update text
-                    this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+		    this.textFactory(this.svg, $(this.txt).val(), 0);
+                    //this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
 		    //this.alloyColor($(this.selTwo).prop("selectedIndex"));
                     //paint canvas
                     this.drawSvg(this.svg);
