@@ -189,7 +189,7 @@ class Product
         } 
         catch (e) 
         {
-            alert("textFactory: " + e);
+            console.log("textFactory: " + e);
         }
     }
     
@@ -211,7 +211,7 @@ class Product
         } 
         catch(e) 
         {
-            alert("drawSvg: "+e);
+            console.log("drawSvg: "+e);
         }
     }
     
@@ -251,7 +251,7 @@ class Product
                 } 
                 catch (e) 
                 {
-                    alert("render: "+e);
+                    console.log("render: "+e);
                 }
             })
             .bind("change",$(this.selOne),(evt)=> 
@@ -266,7 +266,7 @@ class Product
                 } 
                 catch (e) 
                 {
-                    alert("txtMotif: "+e);
+                    console.log("txtMotif: "+e);
                 }
             });
     }
