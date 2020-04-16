@@ -13,7 +13,7 @@ class Product
         this.ns = "http://www.w3.org/2000/svg";
         this._title = $(document).find("title").text();
 		
-				this.txt = null;
+				this.txt =  $("*[title='Max 10 characters with first in Caps']");
 				this.selOne = null;
 				this.selTwo = null;
     }
