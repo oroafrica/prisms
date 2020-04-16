@@ -34,8 +34,10 @@ class Product
 		var parser = new DOMParser();
 
 		this.svg = parser.parseFromString(msg,"image/svg+xml");
+		this.drawSvg(this.svg);   
 		     
 		console.log("SVG Loaded");
+		     
 	      }
 	      catch(e)
 	      {
@@ -123,14 +125,15 @@ class Product
         }
     }
     
-
-	
-    
-
     textFactory(svgDoc, inputName, selectEndOne)
     {
         try 
         {
+           if(selectEndOne === 'undefined' || selectEndOne === null)
+		selectEndOne = 0;
+	   if(inputName === 'undefined' || inputName === null)
+		inputName = "Cara";
+		
            //suffix map
             // var SUFFIX = {0:61, 1:60123, 2:60062, 3:60040, 4:60091};
             var SUFFIX = {0:61, 1:60123, 2:60040, 3:60091};
@@ -167,7 +170,7 @@ class Product
             _c = String.fromCharCode(SUFFIX[selectEndOne]);
             
 
-            var _target = svgDoc.getElementsByTagName("text")[0]; //.getElementById("txt1");
+            var _target = svgDoc.getElementsByTagName("text")[0];
             _target.textContent = "";
             
             var _prefix ,_body, _suffix;
@@ -227,7 +230,7 @@ class Product
 	
     render()
     {  
-// 		this.getSelAccent();
+		this.getSelAccent();
 		this.getSelAlloy();
 		
         $(document)
@@ -239,8 +242,8 @@ class Product
 					console.log($(this.txt).val());
                     this.resetCanvas();
                     //update text
-		    this.textFactory(this.svg, $(this.txt).val(), 0);
-                    //this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+// 		    this.textFactory(this.svg, $(this.txt).val(), 0);
+                    this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
 		    this.alloyColor($(this.selTwo).prop("selectedIndex"));
                     //paint canvas
                     this.drawSvg(this.svg);
