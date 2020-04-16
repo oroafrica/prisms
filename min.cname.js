@@ -4,81 +4,114 @@ class Product
 {
     constructor()
     {
-	this.hasCanvas = false;
-        this.canvas = null; 
-        this.ctx = null; 
-        this.h = 200;
+		this.hasCanvas = false;
+        this.canvas = null; //$("canvas").get(0);
+        this.ctx = null; //this.canvas.getContext("2d");
         this.w = 400;
+		this.h = 150;
         this.svg = null;
         this.ns = "http://www.w3.org/2000/svg";
         this._title = $(document).find("title").text();
 		
-	this.txt = $("*[title='Max 10 characters with first in Caps']");
-	this.selOne = null;
-	this.selTwo = null;
+		this.txt = $("input:text").get(0);
+		this.selOne = null; //$("select").get(0);
+		this.selTwo = null;//$("select").get(1);
     }
     
+	getSelAccent()
+	{
+		try
+		{
+			var tgt = $('select').toArray();
+			$.each(tgt, (index)=> 
+			{
+				if($(tgt)[index].options[1].text === "Butterfly")
+				{
+					// console.log($(tgt)[index].options[1].text);
+					this.selOne =  $(tgt)[index];
+				}	
+			});
+		}
+		catch(e)
+		{
+			console.log(e);
+		}
+	}
+	
+	getSelAlloy()
+	{
+		try
+		{
+			var tgt = $('select').toArray();
+			$.each(tgt, (index)=> 
+			{
+				if($(tgt)[index].options[1].text === "Silver")
+				{
+					this.selTwo =  $(tgt)[index];
+				}	
+			});
+		}
+		catch(e)
+		{
+			console.log(e);
+		}
+	}
+	
     test() 
     {
+		
+		try
+		{
+			var tgt = $('select').toArray();
+			
+			// console.log(tgt.length);
+			// console.log($(tgt)[0].options[1].text);
+			
+			$.each(tgt, (index)=> 
+			{
+				if($(tgt)[index].options[1].text === "Butterfly")
+				{
+					console.log($(tgt)[index].options[1].text);
+				}	
+			});
+		}
+		catch(e)
+		{
+			console.log(e);
+		}
+		
+		
+		/**
         console.log("Product.class"); 
+		console.log($(this.txt).val());
+		this.clsInput();
+		this.clsSelect();
+		this.clsCanvas();
+		
+		console.log("TEST");
+		this.alloyColor($(this.selTwo).prop("selectedIndex"));
+		**/
     }
-	
-    getSelAccent()
-    {
-	try
-	{
-		var tgt = $('select').toArray();
-		$.each(tgt, (index)=> 
-		{
-			if($(tgt)[index].options[1].text === "Butterfly")
-			{
-				this.selOne =  $(tgt)[index];
-			}	
-		});
-	}
-	catch(e)
-	{
-		console.log(e);
-	}
-   }
-	
-   getSelAlloy()
-   {
-	try
-	{
-		var tgt = $('select').toArray();
-		$.each(tgt, (index)=> 
-		{
-			if($(tgt)[index].options[1].text === "Silver")
-			{
-				this.selTwo =  $(tgt)[index];
-			}	
-		});
-	}
-	catch(e)
-	{
-		console.log(e);
-	}
-     }
-	
+    
     clsCanvas()
     {
-	try
-	{
-		this.canvas = $("#canvas").get(0);
-		this.ctx = this.canvas.getContext("2d");
-		this.ctx.clearRect(0, 0, this.w, this.h);
-	}
-	catch(e)
-	{
-		console.log(e);
-	}	
+		try
+		{
+			this.canvas = $("#canvas").get(0);
+			this.ctx = this.canvas.getContext("2d");
+			this.ctx.clearRect(0, 0, this.w, this.h);
+		}
+		catch(e)
+		{
+			alert(e);
+		}	
     }
     
     clsInput()
     {
-	let s = $("input:text").toArray();
-	s.forEach((i)=> i.value = "");
+        let s = $("input:text").toArray();
+        s.forEach((i)=> i.value = "");
+		console.log("clear input");
     }
     
     clsSelect()
@@ -87,36 +120,42 @@ class Product
         s.forEach(()=> $(s)[0].selected = true);
     }
     
-    resetCanvas()
+	resetCanvas()
     {
         if($(this.txt).val() === "")
         {
+            console.log("empty/clear canvas");
             this.clsCanvas();
         }
     }
     
+	/**
+    setBackgroundImage(itemClass, img)
+    {
+        var tmp  = "images/".concat(img);
+        $(".".concat(itemClass)).css("background-image","url(".concat(tmp).concat(".png)"));
+        $(".".concat(itemClass)).css("background-repeat","no-repeat");
+        $(".".concat(itemClass)).css("background-position","center center");
+    }
+    **/
+	
     loadSvg()
     {
-	this.hasCanvas = $("#canvas").length > 0;
-	    
-	if(this.hasCanvas)
-	{
-		try
+		this.hasCanvas = $("#canvas").length > 0;
+		if(this.hasCanvas)
 		{
-			this.canvas = $("canvas").get(0);
-			this.ctx = this.canvas.getContext("2d");
+			try
+			{
+				this.canvas = $("canvas").get(0);
+				this.ctx = this.canvas.getContext("2d");
 
-			var msg = new Item().svg();
-			var parser = new DOMParser();
+				var msg = new Item().svg();
+				var parser = new DOMParser();
+				
+				this.svg = parser.parseFromString(msg,"image/svg+xml");
 
-			this.svg = parser.parseFromString(msg,"image/svg+xml");
-			console.log("svg loaded");
+			}catch(e){console.log("load err: " +e);};
 		}
-		catch(e)
-		{
-			console.log("loadSvg: " + e);
-		};
-	}
         
     }
 
@@ -125,6 +164,7 @@ class Product
         try 
         {
            //suffix map
+            // var SUFFIX = {0:61, 1:60123, 2:60062, 3:60040, 4:60091};
             var SUFFIX = {0:61, 1:60123, 2:60040, 3:60091};
             const x = 60000;
             
@@ -144,12 +184,7 @@ class Product
             {
                 _a = String.fromCharCode(inputName.substring(0,1).charCodeAt(0) + x);
             }
-	     
-	     if(inputName === "Max10characterswithfirstinCaps")
-	     {
-		return;
-	     }
-		
+
             _b = "";
             if(inputName.length > 1)
             {
@@ -157,8 +192,9 @@ class Product
             }
             
             _c = String.fromCharCode(SUFFIX[selectEndOne]);
+            
 
-            var _target = svgDoc.getElementsByTagName("text")[0];
+            var _target = svgDoc.getElementsByTagName("text")[0]; //.getElementById("txt1");
             _target.textContent = "";
             
             var _prefix ,_body, _suffix;
@@ -166,17 +202,17 @@ class Product
             _body = document.createElementNS(this.ns,"tspan");
             _suffix = document.createElementNS(this.ns,"tspan"); 
            
-	    _prefix.textContent = _a;
-	    _body.textContent = _b;
-	    _suffix.textContent = _c;
-		
-	    _target.appendChild(_prefix);
-	    _target.appendChild(_body);
-	    _target.appendChild(_suffix);
+           _prefix.textContent = _a;
+           _body.textContent = _b;
+           _suffix.textContent = _c;
+
+            _target.appendChild(_prefix);
+            _target.appendChild(_body);
+            _target.appendChild(_suffix);
         } 
         catch (e) 
         {
-            console.log("textFactory: " + e);
+            alert("textFactory: " + e);
         }
     }
     
@@ -198,42 +234,47 @@ class Product
         } 
         catch(e) 
         {
-            console.log("drawSvg: " + e);
+            alert("drawSvg: "+e);
         }
     }
     
-    alloyColor(selTwo)
-   {
-	try
+	alloyColor(selTwo)
 	{
-		var alloy = {0:"#b4b4b4",1:"#b4b4b4", 2:"#bbb100", 3:"#e0afbc", 4:"#a3a3a3"};
-		let _target = this.svg.getElementsByTagName("text")[0];
-		_target.style.fill = alloy[selTwo];
+		try
+		{
+			var alloy = {0:"#b4b4b4",1:"#b4b4b4", 2:"#bbb100", 3:"#e0afbc", 4:"#a3a3a3"};
+			let _target = this.svg.getElementsByTagName("text")[0];
+			_target.style.fill = alloy[selTwo];
+		}
+		catch(e)
+		{
+			console.log("alloyColor: " + e);
+		}
 	}
-	catch(e)
-	{
-		console.log("alloyColor: " + e);
-	}
-  }
 	
-  render()
-  {  
-	this.getSelAccent();
-	this.getSelAlloy();
-	  
+    render()
+    {  
+		this.getSelAccent();
+		this.getSelAlloy();
+		
         $(document)
             .on("keyup",$(this.txt),(evt)=>
             {
                 try 
                 {
-			/** update for alt+(n).key **/
-                    	this.resetCanvas();
-                    	//update text
-                    	this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-			//update alloy
-			this.alloyColor($(this.selTwo).prop("selectedIndex"));
-                    	//paint canvas
-                    	this.drawSvg(this.svg);
+					/**
+                    if(evt.keyCode === 18 )
+                    {
+                        this.resetCanvas();//$("#txtMotif").find(":selected").val();//console.log(evt.keyCode);//alert(evt.keyCode );
+                    }**/
+					console.log("render");
+                    this.resetCanvas();
+                    //update text
+                    // this.textFactory(this.svg, $("#txtOne").val(), $("#txtMotif").find(":selected").val());
+                    this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+					this.alloyColor($(this.selTwo).prop("selectedIndex"));
+                    //paint canvas
+                    this.drawSvg(this.svg);
                 } 
                 catch (e) 
                 {
@@ -244,33 +285,35 @@ class Product
             {
                 try 
                 {
-                    	/** update for alt+(n).key **/
-                    	this.resetCanvas();
-                    	//update text
-                    	this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-			//update alloy
-			this.alloyColor($(this.selTwo).prop("selectedIndex"));
-                    	//paint canvas
-                    	this.drawSvg(this.svg);
+                    // if(evt.keyCode === 18 )
+                    // {
+                        // evt.altCode ;//$("#txtMotif").find(":selected").val();//console.log(evt.keyCode);//alert(evt.keyCode );
+                    // }
+                    this.resetCanvas();
+					this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+					this.alloyColor($(this.selTwo).prop("selectedIndex"));
+                    // //paint canvas
+                    this.drawSvg(this.svg);
                 } 
                 catch (e) 
                 {
-                    console.log("txtMotif: "+e);
+                    alert("txtMotif: "+e);
                 }
             });
     }
     
     init()
     {
-	if($("#canvas").length > 0)
-	{
-		this.loadSvg();
-		this.render();
-	}
-	else
-	{
-		console.log("No Canvas Found/Contact product.js vendor");
-	}      
+		if($("#canvas").length > 0)
+		{
+			this.loadSvg();
+			this.render();
+		}
+		else
+		{
+			console.log("No Canvas Found/Contact product.js vendor");
+		}
+       
     }
 }
 
@@ -278,7 +321,7 @@ class Item
 {
 	svg()
 	{
-		return "<svg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='400' height='200'>"
+		return "<svg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='400' height='150'>"
 		.concat("<defs>")
 		.concat("<style type='text/css'>@font-face")
 		.concat("{")
@@ -300,10 +343,12 @@ class Item
 		
 		.concat("</defs>")
 		
-		.concat("<g><text id='txt1' style='font-size:25;stroke:none;text-anchor:middle;font-family:wz_bname' filter='url(#Bevel)' fill='#bbb100' transform='matrix(1 0 0 1 200 110)' ></text></g>")
+		.concat("<g><text id='txt1' style='font-size:25;stroke:none;text-anchor:middle;font-family:wz_bname' filter='url(#Bevel)' fill='#bbb100' transform='matrix(1 0 0 1 200 90)' ></text></g>")
 		.concat("</svg>");
 	}	
 }
+
+
 
 
 
