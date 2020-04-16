@@ -22,111 +22,90 @@ class Product
 	
     loadSvg()
     {
-	this.hasCanvas = $("#canvas").length > 0;
-	if(this.hasCanvas)
-	{
-	    try
-	     {
-		this.canvas = $("canvas").get(0);
-		this.ctx = this.canvas.getContext("2d");
+				 try
+				 {
+						this.canvas = $("canvas").get(0);
+						this.ctx = this.canvas.getContext("2d");
 
-		var msg = new Item().svg();
-		var parser = new DOMParser();
+						var msg = new Item().svg();
+						var parser = new DOMParser();
 
-		this.svg = parser.parseFromString(msg,"image/svg+xml");
-		this.drawSvg(this.svg);   
-		     
-		console.log("SVG Loaded");
-		     
-	      }
-	      catch(e)
-	      {
-		 console.log("loadSvg: " + e);
-	      }
-	 } 
+						this.svg = parser.parseFromString(msg,"image/svg+xml");
+						this.drawSvg(this.svg);   
+
+						console.log("SVG Loaded");
+					}
+					catch(e)
+					{
+						 console.log("loadSvg: " + e);
+					}
     }
     getInput()
     {
-	try
-	{
-	   this.txt = $("*[title='Max 10 characters with first in Caps']");
-	}
-	catch(e)
-	{
-            console.log(e)
-	}
+				try
+				{
+					 this.txt = $("*[title='Max 10 characters with first in Caps']");
+				}
+				catch(e)
+				{
+						console.log(e)
+				}
     }		
     getSelAccent()
     {
         try
-	{
-	    var tgt = $('select').toArray();
-	    $.each(tgt, (index)=> 
-	    {
-		if($(tgt)[index].options[1].text === "Butterfly")
-		{
-			console.log($(tgt)[index].options[1].text);
-			this.selOne =  $(tgt)[index];
-		}	
-	 });
-     }
-	catch(e)
-	{
-	    console.log(e);
-	}
+				{
+						var tgt = $('select').toArray();
+						$.each(tgt, (index)=> 
+						{
+								if($(tgt)[index].options[1].text === "Butterfly")
+								{
+									console.log($(tgt)[index].options[1].text);
+									this.selOne =  $(tgt)[index];
+								}	
+					 	});
+     		}
+				catch(e)
+				{
+						console.log(e);
+				}
      }
 	
     getSelAlloy()
     {
-	try
-	{       
-	        var tgt = $('select').toArray();
-	        $.each(tgt, (index)=> 
-	        {
-		    if($(tgt)[index].options[1].text === "Silver")
-		     {
-			this.selTwo =  $(tgt)[index];
-		        console.log($(tgt)[index].options[1].text);
-		      }	
-	        });
-		console.log("alloy select found");
-	  }
-	  catch(e)
-	  {
-		console.log(e);
-	   }
+				try
+				{       
+							var tgt = $('select').toArray();
+							$.each(tgt, (index)=> 
+							{
+									 if($(tgt)[index].options[1].text === "Silver")
+									 {
+												this.selTwo =  $(tgt)[index];
+												console.log($(tgt)[index].options[1].text);
+										}	
+							});
+							console.log("alloy select found");
+					}
+					catch(e)
+					{
+							console.log(e);
+					}
     }
-	
-    
-    
+
     clsCanvas()
     {
-		try
-		{
-			this.canvas = $("#canvas").get(0);
-			this.ctx = this.canvas.getContext("2d");
-			this.ctx.clearRect(0, 0, this.w, this.h);
-		}
-		catch(e)
-		{
-			alert(e);
-		}	
+				try
+				{
+						this.canvas = $("#canvas").get(0);
+						this.ctx = this.canvas.getContext("2d");
+						this.ctx.clearRect(0, 0, this.w, this.h);
+				}
+				catch(e)
+				{
+						console.log(e);
+				}	
     }
-    /**
-    clsInput()
-    {
-        let s = $("input:text").toArray();
-        s.forEach((i)=> i.value = "");
-		console.log("clear input");
-    }
-    
-    clsSelect()
-    {
-        let s = $("select option").toArray();
-        s.forEach(()=> $(s)[0].selected = true);
-    }
-    **/
-	resetCanvas()
+		resetCanvas()
     {
         if($(this.txt).val() === "")
         {
@@ -139,13 +118,14 @@ class Product
     {
         try 
         {
-	  console.log("inputName: " + inputName);
-           if(selectEndOne === 'undefined' || selectEndOne === null)
-		selectEndOne = 0;
-	   if(inputName === 'undefined' || inputName === null)
-		inputName = "Sarah";
+						 console.log("inputName: " + inputName);
+					
+						 if(selectEndOne === 'undefined' || selectEndOne === null)
+								selectEndOne = 0;
+						 if(inputName === 'undefined' || inputName === null)
+								inputName = "Sarah";
 		
-           //suffix map
+            //suffix map
             var SUFFIX = {0:61, 1:60123, 2:60040, 3:60091};
             const x = 60000;
             
@@ -161,10 +141,10 @@ class Product
             {
                 return;
             }
-	    else if(inputName === "Max10characterswithfirstinCaps")
-	     {
-		return;
-	     }    
+						else if(inputName === "Max10characterswithfirstinCaps")
+						 {
+								return;
+						 }    
             else
             {
                 _a = String.fromCharCode(inputName.substring(0,1).charCodeAt(0) + x);
@@ -188,13 +168,13 @@ class Product
             _body = document.createElementNS(this.ns,"tspan");
             _suffix = document.createElementNS(this.ns,"tspan"); 
            
-	    _prefix.textContent = _a;
-	    _body.textContent = _b;
-	    _suffix.textContent = _c;
-		
-	    _target.appendChild(_prefix);
-	    _target.appendChild(_body);
-	    _target.appendChild(_suffix);
+						_prefix.textContent = _a;
+						_body.textContent = _b;
+						_suffix.textContent = _c;
+
+						_target.appendChild(_prefix);
+						_target.appendChild(_body);
+						_target.appendChild(_suffix);
         } 
         catch (e) 
         {
@@ -241,21 +221,23 @@ class Product
     render()
     {           
 	        this.getInput();
-		this.getSelAccent();
-		this.getSelAlloy();
+					this.getSelAccent();
+					this.getSelAlloy();
 		
         $(document)
             .on("keyup",$(this.txt),(evt)=>
             {
                 try 
                 {
-
-	            console.log($(this.txt).val());
+	                  console.log($(this.txt).val());
                     this.resetCanvas();
                     //update text
-// 		    this.textFactory(this.svg, $(this.txt).val(), 0);
-                    this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-		    this.alloyColor($(this.selTwo).prop("selectedIndex"));
+                   // this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+		                //this.alloyColor($(this.selTwo).prop("selectedIndex"));
+									
+									  this.textFactory(this.svg, "sarah",0);
+		                this.alloyColor(2);
+									
                     //paint canvas
                     this.drawSvg(this.svg);
                 } 
@@ -269,8 +251,12 @@ class Product
                 try 
                 {
                     this.resetCanvas();
-		    this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-		    this.alloyColor($(this.selTwo).prop("selectedIndex"));
+		    						//update text
+                    // this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+		                //this.alloyColor($(this.selTwo).prop("selectedIndex"));
+									
+									  this.textFactory(this.svg, "sarah",0);
+		                this.alloyColor(2);
                     // //paint canvas
                     this.drawSvg(this.svg);
                 } 
