@@ -14,23 +14,53 @@ class Product
         this._title = $(document).find("title").text();
 		
 	this.txt = $("*[title='Max 10 characters with first in Caps']");
-	this.selOne = $("select").get(1);
-	this.selTwo = $("select").get(0);
+	this.selOne = null;
+	this.selTwo = null;
     }
     
     test() 
     {
-		/**
         console.log("Product.class"); 
-		console.log($(this.txt).val());
-		this.clsInput();
-		this.clsSelect();
-		this.clsCanvas();
-		**/
-		console.log("TEST");
-		this.alloyColor($(this.selTwo).prop("selectedIndex"));
     }
-    
+	
+    getSelAccent()
+    {
+	try
+	{
+		var tgt = $('select').toArray();
+		$.each(tgt, (index)=> 
+		{
+			if($(tgt)[index].options[1].text === "Butterfly")
+			{
+				this.selOne =  $(tgt)[index];
+			}	
+		});
+	}
+	catch(e)
+	{
+		console.log(e);
+	}
+   }
+	
+   getSelAlloy()
+   {
+	try
+	{
+		var tgt = $('select').toArray();
+		$.each(tgt, (index)=> 
+		{
+			if($(tgt)[index].options[1].text === "Silver")
+			{
+				this.selTwo =  $(tgt)[index];
+			}	
+		});
+	}
+	catch(e)
+	{
+		console.log(e);
+	}
+     }
+	
     clsCanvas()
     {
 	try
@@ -41,15 +71,14 @@ class Product
 	}
 	catch(e)
 	{
-		alert(e);
+		console.log(e);
 	}	
     }
     
     clsInput()
     {
-		let s = $("input:text").toArray();
-		s.forEach((i)=> i.value = "");
-		console.log("clear input");
+	let s = $("input:text").toArray();
+	s.forEach((i)=> i.value = "");
     }
     
     clsSelect()
@@ -58,28 +87,18 @@ class Product
         s.forEach(()=> $(s)[0].selected = true);
     }
     
-	resetCanvas()
+    resetCanvas()
     {
         if($(this.txt).val() === "")
         {
-            console.log("empty/clear canvas");
             this.clsCanvas();
         }
     }
     
-	/**
-    setBackgroundImage(itemClass, img)
-    {
-        var tmp  = "images/".concat(img);
-        $(".".concat(itemClass)).css("background-image","url(".concat(tmp).concat(".png)"));
-        $(".".concat(itemClass)).css("background-repeat","no-repeat");
-        $(".".concat(itemClass)).css("background-position","center center");
-    }
-    **/
-	
     loadSvg()
     {
 	this.hasCanvas = $("#canvas").length > 0;
+	    
 	if(this.hasCanvas)
 	{
 		try
@@ -94,7 +113,7 @@ class Product
 		}
 		catch(e)
 		{
-			console.log("load err: " +e);
+			console.log("loadSvg: " +e);
 		};
 	}
         
@@ -105,7 +124,6 @@ class Product
         try 
         {
            //suffix map
-            // var SUFFIX = {0:61, 1:60123, 2:60062, 3:60040, 4:60091};
             var SUFFIX = {0:61, 1:60123, 2:60040, 3:60091};
             const x = 60000;
             
@@ -138,9 +156,8 @@ class Product
             }
             
             _c = String.fromCharCode(SUFFIX[selectEndOne]);
-            
 
-            var _target = svgDoc.getElementsByTagName("text")[0]; //.getElementById("txt1");
+            var _target = svgDoc.getElementsByTagName("text")[0];
             _target.textContent = "";
             
             var _prefix ,_body, _suffix;
@@ -158,7 +175,7 @@ class Product
         } 
         catch (e) 
         {
-            alert("textFactory: " + e);
+            console.log("textFactory: " + e);
         }
     }
     
@@ -180,40 +197,36 @@ class Product
         } 
         catch(e) 
         {
-            alert("drawSvg: "+e);
+            console.log("drawSvg: " + e);
         }
     }
     
-	alloyColor(selTwo)
+    alloyColor(selTwo)
+   {
+	try
 	{
-		try
-		{
-			var alloy = {0:"#b4b4b4",1:"#b4b4b4", 2:"#bbb100", 3:"#e0afbc", 4:"#a3a3a3"}; //{0:"#b4b4b4", 1:"#bbb100", 2:"#e0afbc", 3:"#a3a3a3"};
-			let _target = this.svg.getElementsByTagName("text")[0];
-			_target.style.fill = alloy[selTwo];
-		}
-		catch(e)
-		{
-			console.log("alloyColor: " + e);
-		}
+		var alloy = {0:"#b4b4b4",1:"#b4b4b4", 2:"#bbb100", 3:"#e0afbc", 4:"#a3a3a3"};
+		let _target = this.svg.getElementsByTagName("text")[0];
+		_target.style.fill = alloy[selTwo];
 	}
+	catch(e)
+	{
+		console.log("alloyColor: " + e);
+	}
+  }
 	
-    render()
-    {  
+  render()
+  {  
         $(document)
             .on("keyup",$(this.txt),(evt)=>
             {
                 try 
                 {
-					/**
-                    if(evt.keyCode === 18 )
-                    {
-                        this.resetCanvas();//$("#txtMotif").find(":selected").val();//console.log(evt.keyCode);//alert(evt.keyCode );
-                    }**/
-					
+			/** update for alt+(n).key **/
                     	this.resetCanvas();
                     	//update text
                     	this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+			//update alloy
 			this.alloyColor($(this.selTwo).prop("selectedIndex"));
                     	//paint canvas
                     	this.drawSvg(this.svg);
@@ -227,19 +240,18 @@ class Product
             {
                 try 
                 {
-                    // if(evt.keyCode === 18 )
-                    // {
-                        // evt.altCode ;//$("#txtMotif").find(":selected").val();//console.log(evt.keyCode);//alert(evt.keyCode );
-                    // }
+                    	/** update for alt+(n).key **/
                     	this.resetCanvas();
-			this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+                    	//update text
+                    	this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+			//update alloy
 			this.alloyColor($(this.selTwo).prop("selectedIndex"));
-		   	 // //paint canvas
-		    	this.drawSvg(this.svg);
+                    	//paint canvas
+                    	this.drawSvg(this.svg);
                 } 
                 catch (e) 
                 {
-                    alert("txtMotif: "+e);
+                    console.log("txtMotif: "+e);
                 }
             });
     }
