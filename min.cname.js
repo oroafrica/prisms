@@ -270,11 +270,11 @@ class Product
     {
 		if($("#canvas").length > 0)
 		{
-			this.getInput();
-					this.getSelAccent();
-					this.getSelAlloy();
-			this.loadSvg();
-			this.render();
+				this.getInput();
+				this.getSelAccent();
+				this.getSelAlloy();
+				this.loadSvg();
+				this.render();
 		}
 		else
 		{
