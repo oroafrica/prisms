@@ -139,13 +139,13 @@ class Product
     {
         try 
         {
+	  console.log("inputName: " + inputName);
            if(selectEndOne === 'undefined' || selectEndOne === null)
 		selectEndOne = 0;
 	   if(inputName === 'undefined' || inputName === null)
-		inputName = "Cara";
+		inputName = "Sarah";
 		
            //suffix map
-            // var SUFFIX = {0:61, 1:60123, 2:60062, 3:60040, 4:60091};
             var SUFFIX = {0:61, 1:60123, 2:60040, 3:60091};
             const x = 60000;
             
@@ -161,16 +161,16 @@ class Product
             {
                 return;
             }
+	    else if(inputName === "Max10characterswithfirstinCaps")
+	     {
+		return;
+	     }    
             else
             {
                 _a = String.fromCharCode(inputName.substring(0,1).charCodeAt(0) + x);
             }
 	     
-	     if(inputName === "Max10characterswithfirstinCaps")
-	     {
-		return;
-	     }
-		
+	     
             _b = "";
             if(inputName.length > 1)
             {
