@@ -243,9 +243,8 @@ class Product
 					console.log($(this.txt).val());
                     this.resetCanvas();
                     //update text
-                    // this.textFactory(this.svg, $("#txtOne").val(), $("#txtMotif").find(":selected").val());
                     this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-					this.alloyColor($(this.selTwo).prop("selectedIndex"));
+		    //this.alloyColor($(this.selTwo).prop("selectedIndex"));
                     //paint canvas
                     this.drawSvg(this.svg);
                 } 
