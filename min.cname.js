@@ -17,7 +17,33 @@ class Product
 	this.selOne = null;
 	this.selTwo = null;
     }
-    
+
+    test(){console.log("Product.class");}
+	
+    loadSvg()
+    {
+	this.hasCanvas = $("#canvas").length > 0;
+	if(this.hasCanvas)
+	{
+	    try
+	     {
+		this.canvas = $("canvas").get(0);
+		this.ctx = this.canvas.getContext("2d");
+
+		var msg = new Item().svg();
+		var parser = new DOMParser();
+
+		this.svg = parser.parseFromString(msg,"image/svg+xml");
+		     
+		console.log("SVG Loaded");
+	      }
+	      catch(e)
+	      {
+		 console.log("loadSvg: " + e);
+	      }
+	 } 
+    }
+	
     getSelAccent()
     {
         try
@@ -41,16 +67,17 @@ class Product
     getSelAlloy()
     {
 	try
-	{
+	{       
 	        var tgt = $('select').toArray();
 	        $.each(tgt, (index)=> 
 	        {
 		    if($(tgt)[index].options[1].text === "Silver")
 		     {
 			this.selTwo =  $(tgt)[index];
-			     console.log($(tgt)[index].options[1].text);
+		        console.log($(tgt)[index].options[1].text);
 		      }	
 	        });
+		console.log("alloy select found");
 	  }
 	  catch(e)
 	  {
@@ -58,20 +85,7 @@ class Product
 	   }
     }
 	
-    test() 
-    {
-		console.log("Product.class"); 
-		/**
-        
-		console.log($(this.txt).val());
-		this.clsInput();
-		this.clsSelect();
-		this.clsCanvas();
-		
-		console.log("TEST");
-		this.alloyColor($(this.selTwo).prop("selectedIndex"));
-		**/
-    }
+    
     
     clsCanvas()
     {
@@ -111,25 +125,7 @@ class Product
     
 
 	
-    loadSvg()
-    {
-		this.hasCanvas = $("#canvas").length > 0;
-		if(this.hasCanvas)
-		{
-			try
-			{
-				this.canvas = $("canvas").get(0);
-				this.ctx = this.canvas.getContext("2d");
-
-				var msg = new Item().svg();
-				var parser = new DOMParser();
-				
-				this.svg = parser.parseFromString(msg,"image/svg+xml");
-
-			}catch(e){console.log("load err: " +e);};
-		}
-        
-    }
+    
 
     textFactory(svgDoc, inputName, selectEndOne)
     {
