@@ -13,7 +13,7 @@ class Product
         this.ns = "http://www.w3.org/2000/svg";
         this._title = $(document).find("title").text();
 		
-	this.txt = $("*[title='Max 10 characters with first in Caps']");
+	this.txt = null;
 	this.selOne = null;
 	this.selTwo = null;
     }
@@ -45,7 +45,17 @@ class Product
 	      }
 	 } 
     }
-	
+    getInput()
+    {
+	try
+	{
+	   this.txt = $("*[title='Max 10 characters with first in Caps']");
+	}
+	catch(e)
+	{
+            console.log(e)
+	}
+    }		
     getSelAccent()
     {
         try
@@ -229,7 +239,8 @@ class Product
 	}
 	
     render()
-    {  
+    {           
+	        this.getInput();
 		this.getSelAccent();
 		this.getSelAlloy();
 		
@@ -239,7 +250,7 @@ class Product
                 try 
                 {
 
-					console.log($(this.txt).val());
+	            console.log($(this.txt).val());
                     this.resetCanvas();
                     //update text
 // 		    this.textFactory(this.svg, $(this.txt).val(), 0);
