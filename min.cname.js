@@ -234,7 +234,7 @@ class Product
 		                //this.alloyColor($(this.selTwo).prop("selectedIndex"));
 									
 // 			  	this.textFactory(this.svg, "Anna",0);
-									 this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+									 this.textFactory(this.svg, $(this.txt).val(), 0);
 		                this.alloyColor($(this.selTwo).prop("selectedIndex"));
 									
                     //paint canvas
