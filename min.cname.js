@@ -49,7 +49,7 @@ class Product
 				}
 				catch(e)
 				{
-						console.log(e)
+						console.log("getInput: " + e)
 				}
     }		
     getSelAccent()
