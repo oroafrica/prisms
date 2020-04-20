@@ -56,23 +56,23 @@ class Product
     {
         try
 				{
-					let tgt = $('select:eq(3)');
-// 						let tgt = $('select').toArray();
+// 					let tgt = $('select:eq(3)');
+						let tgt = $('select').toArray();
 // 					this.selOne =  $(tgt).get(3);
-					console.log($(tgt)[index].options[1].text);
+					console.log("accent: " + $(tgt)[index].options[1].text);
 // 					  console.log("total select: " + tgt.length);
-// 						$.each(tgt, (index)=> 
-// 						{
-// 								if($(tgt)[index].options[1].text === "Heart")
-// 								{
-// 									this.selOne =  $(tgt)[index];
-// 									console.log($(tgt)[index].options[1].text);
-// 								}	
-// 								else
-// 								{
-// 										this.selOne =  $(tgt).get(3);
-// 								}
-// 					 	});
+						$.each(tgt, (index)=> 
+						{
+								if($(tgt)[index].options[1].text === "Heart")
+								{
+									this.selOne =  $(tgt)[index];
+									console.log($(tgt)[index].options[1].text);
+								}	
+								else
+								{
+										this.selOne =  $(tgt).get(3);
+								}
+					 	});
      		}
 				catch(e)
 				{
