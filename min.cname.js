@@ -57,19 +57,20 @@ class Product
         try
 				{
 						let tgt = $('select').toArray();
-					  console.log("total select: " + tgt.length);
-						$.each(tgt, (index)=> 
-						{
-								if($(tgt)[index].options[1].text === "Heart")
-								{
-									this.selOne =  $(tgt)[index];
-									console.log($(tgt)[index].options[1].text);
-								}	
-								else
-								{
-										this.selOne =  $(tgt).get(3);
-								}
-					 	});
+					this.selOne =  $(tgt).get(3);
+// 					  console.log("total select: " + tgt.length);
+// 						$.each(tgt, (index)=> 
+// 						{
+// 								if($(tgt)[index].options[1].text === "Heart")
+// 								{
+// 									this.selOne =  $(tgt)[index];
+// 									console.log($(tgt)[index].options[1].text);
+// 								}	
+// 								else
+// 								{
+// 										this.selOne =  $(tgt).get(3);
+// 								}
+// 					 	});
      		}
 				catch(e)
 				{
