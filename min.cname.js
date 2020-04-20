@@ -229,7 +229,7 @@ class Product
 			
 					this.resetCanvas();
 					//update text
-				  this.textFactory(this.svg, $(this.txt).val(), $(this.selTwo).prop("selectedIndex"));
+				  this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
 			    //update alloy
 					this.alloyColor($(this.selTwo).prop("selectedIndex"));
 					//paint canvas
