@@ -56,14 +56,14 @@ class Product
     {
         try
 				{
-						var tgt = $('select').toArray();
+						let tgt = $('select').toArray();
 					  console.log("total select: " + tgt.length);
 						$.each(tgt, (index)=> 
 						{
 								if($(tgt)[index].options[1].text === "Heart")
 								{
-									console.log($(tgt)[index].options[1].text);
 									this.selOne =  $(tgt)[index];
+									console.log($(tgt)[index].options[1].text);
 								}	
 					 	});
      		}
@@ -77,7 +77,8 @@ class Product
     {
 				try
 				{       
-							var tgt = $('select').toArray();
+							let tgt = $('select').toArray();
+					 		console.log("total select: " + tgt.length);
 							$.each(tgt, (index)=> 
 							{
 									 if($(tgt)[index].options[1].text === "Silver")
@@ -218,8 +219,8 @@ class Product
 	{
 		try
 		{
-					console.log("current input: " + $(this.txt).val());
-					this.getInput();
+// 					console.log("current input: " + $(this.txt).val());
+// 					this.getInput();
 					this.resetCanvas();
 					//update text
 				  this.textFactory(this.svg, $(this.txt).val(), $(this.selTwo).prop("selectedIndex"));
@@ -270,9 +271,6 @@ class Product
     {
 		if($("#canvas").length > 0)
 		{
-// 				this.getInput();
-// 				this.getSelAccent();
-// 				this.getSelAlloy();
 				this.loadSvg();
 				this.render();
 		}
