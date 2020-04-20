@@ -56,6 +56,7 @@ class Product
         try
 				{
 						var tgt = $('select').toArray();
+					  console.log("total select: " + tgt.length);
 						$.each(tgt, (index)=> 
 						{
 								if($(tgt)[index].options[1].text === "Butterfly")
@@ -218,27 +219,32 @@ class Product
 		}
 	}
 	
+	interactivity()
+	{
+		try
+		{
+					console.log("current input: " + $(this.txt).val());
+					this.resetCanvas();
+					//update text
+				  this.textFactory(this.svg, $(this.txt).val(), $(this.selTwo).prop("selectedIndex"));
+			    //update alloy
+					this.alloyColor($(this.selTwo).prop("selectedIndex"));
+					//paint canvas
+					this.drawSvg(this.svg);
+		}
+		catch(e)
+		{
+			 console.log("interactivity: " + e);
+		}
+	}
     render()
     {           
-	        
-		
         $(document)
             .on("keyup",$(this.txt),(evt)=>
             {
                 try 
                 {
-	                  console.log($(this.txt).val());
-                    this.resetCanvas();
-                    //update text
-                   // this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-		                //this.alloyColor($(this.selTwo).prop("selectedIndex"));
-									
-// 			  	this.textFactory(this.svg, "Anna",0);
-									 this.textFactory(this.svg, $(this.txt).val(), $(this.selTwo).prop("selectedIndex"));
-		                this.alloyColor($(this.selTwo).prop("selectedIndex"));
-									
-                    //paint canvas
-                    this.drawSvg(this.svg);
+										this.interactivity();
                 } 
                 catch (e) 
                 {
@@ -249,15 +255,7 @@ class Product
             {
                 try 
                 {
-                    this.resetCanvas();
-		    						//update text
-                    // this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-		                //this.alloyColor($(this.selTwo).prop("selectedIndex"));
-									
-		   this.textFactory(this.svg, $(this.txt).val(), $(this.selTwo).prop("selectedIndex"));//this.textFactory(this.svg, "Anna",0);
-		  this.alloyColor($(this.selTwo).prop("selectedIndex"));
-                    // //paint canvas
-                    this.drawSvg(this.svg);
+										this.interactivity();
                 } 
                 catch (e) 
                 {
