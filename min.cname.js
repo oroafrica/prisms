@@ -59,20 +59,20 @@ class Product
 // 					let tgt = $('select:eq(3)');
 						let tgt = $('select').toArray();
 // 					this.selOne =  $(tgt).get(3);
-					console.log("accent: " + $(tgt)[index].options[1].text);
+					console.log("accent: " + $(tgt)[3].options[1].text);
 // 					  console.log("total select: " + tgt.length);
-						$.each(tgt, (index)=> 
-						{
-								if($(tgt)[index].options[1].text === "Heart")
-								{
-									this.selOne =  $(tgt)[index];
-									console.log($(tgt)[index].options[1].text);
-								}	
-								else
-								{
-										this.selOne =  $(tgt).get(3);
-								}
-					 	});
+// 						$.each(tgt, (index)=> 
+// 						{
+// 								if($(tgt)[index].options[1].text === "Heart")
+// 								{
+// 									this.selOne =  $(tgt)[index];
+// 									console.log($(tgt)[index].options[1].text);
+// 								}	
+// 								else
+// 								{
+// 										this.selOne =  $(tgt).get(3);
+// 								}
+// 					 	});
      		}
 				catch(e)
 				{
@@ -85,16 +85,14 @@ class Product
 				try
 				{       
 							let tgt = $('select').toArray();
-					 		console.log("total select: " + tgt.length);
 							$.each(tgt, (index)=> 
 							{
 									 if($(tgt)[index].options[1].text === "Silver")
 									 {
 												this.selTwo =  $(tgt)[index];
-												console.log($(tgt)[index].options[1].text);
+												//console.log($(tgt)[index].options[1].text);
 										}	
 							});
-							console.log("alloy select found");
 					}
 					catch(e)
 					{
