@@ -56,24 +56,9 @@ class Product
     {
         try
 				{
-// 					let tgt = $('select:eq(3)');
 						let tgt = $('select').toArray();
-// 					this.selOne =  $(tgt).get(3);
-					console.log("accent: " + $(tgt)[2].options[1].text);
-					this.selOne =  $(tgt).eq(2);
-// 					  console.log("total select: " + tgt.length);
-// 						$.each(tgt, (index)=> 
-// 						{
-// 								if($(tgt)[index].options[1].text === "Heart")
-// 								{
-// 									this.selOne =  $(tgt)[index];
-// 									console.log($(tgt)[index].options[1].text);
-// 								}	
-// 								else
-// 								{
-// 										this.selOne =  $(tgt).get(3);
-// 								}
-// 					 	});
+						this.selOne =  $(tgt).eq(2);
+					  console.log("accent: " + $(tgt)[2].options[1].text);
      		}
 				catch(e)
 				{
@@ -128,6 +113,7 @@ class Product
         try 
         {
 					  if(selectEndOne === 'undefined'){selectEndOne = 0; console.log("selectEndOne: " + selectEndOne);}
+					  if(inputName === 'undefined'){inputName = "Cara";}
             //suffix map
             var SUFFIX = {0:61, 1:60091, 2:60040, 3:60123};
             const x = 60000;
