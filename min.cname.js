@@ -59,7 +59,8 @@ class Product
 // 					let tgt = $('select:eq(3)');
 						let tgt = $('select').toArray();
 // 					this.selOne =  $(tgt).get(3);
-					console.log("accent: " + $(tgt)[3].options[1].text);
+					console.log("accent: " + $(tgt)[2].options[1].text);
+					this.selOne =  $(tgt).eq(2);
 // 					  console.log("total select: " + tgt.length);
 // 						$.each(tgt, (index)=> 
 // 						{
@@ -230,8 +231,8 @@ class Product
 			
 					this.resetCanvas();
 					//update text
-// 				  this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-			    this.textFactory(this.svg, $(this.txt).val(), 0);
+				  this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
+// 			    this.textFactory(this.svg, $(this.txt).val(), 0);
 			    //update alloy
 					this.alloyColor($(this.selTwo).prop("selectedIndex"));
 					//paint canvas
