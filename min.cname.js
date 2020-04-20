@@ -56,8 +56,10 @@ class Product
     {
         try
 				{
-						let tgt = $('select').toArray();
-					this.selOne =  $(tgt).get(3);
+					let tgt = $('select:eq(3)');
+// 						let tgt = $('select').toArray();
+// 					this.selOne =  $(tgt).get(3);
+					console.log($(tgt)[index].options[1].text);
 // 					  console.log("total select: " + tgt.length);
 // 						$.each(tgt, (index)=> 
 // 						{
