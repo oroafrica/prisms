@@ -65,6 +65,10 @@ class Product
 									this.selOne =  $(tgt)[index];
 									console.log($(tgt)[index].options[1].text);
 								}	
+								else
+								{
+										this.selOne =  $(tgt).get(3);
+								}
 					 	});
      		}
 				catch(e)
