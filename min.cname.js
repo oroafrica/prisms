@@ -60,7 +60,7 @@ class Product
 				{
 						let tgt = $('select').toArray();
 						this.selOne =  $(tgt).eq(2);
-					  console.log("accent: " + $(tgt)[2].options[1].text);
+					  //console.log("accent: " + $(tgt)[2].options[1].text);
      		}
 				catch(e)
 				{
