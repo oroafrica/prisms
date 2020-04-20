@@ -44,7 +44,8 @@ class Product
     {
 				try
 				{
-					 this.txt = $("*[title='Max 10 characters with first in Caps']");
+					 this.txt = $("#option_2862_1525"); 
+					 if(this.txt === 'undefined'){this.txt = $("*[title='Max 10 characters with first in Caps']");}
 				}
 				catch(e)
 				{
@@ -59,7 +60,7 @@ class Product
 					  console.log("total select: " + tgt.length);
 						$.each(tgt, (index)=> 
 						{
-								if($(tgt)[index].options[1].text === "Butterfly")
+								if($(tgt)[index].options[1].text === "Heart")
 								{
 									console.log($(tgt)[index].options[1].text);
 									this.selOne =  $(tgt)[index];
@@ -119,15 +120,9 @@ class Product
     {
         try 
         {
-						 console.log("inputName: " + inputName);
-					
-// 						 if(selectEndOne === 'undefined' || selectEndOne === null)
-// 								selectEndOne = 0;
-// 						 if(inputName === 'undefined' || inputName === null)
-// 								inputName = "NoName";
-		
+					  if(selectEndOne === 'undefined'){selectEndOne = 0; console.log("selectEndOne: " + selectEndOne);}
             //suffix map
-            var SUFFIX = {0:61, 1:60123, 2:60040, 3:60091};
+            var SUFFIX = {0:61, 1:60091, 2:60040, 3:60123};
             const x = 60000;
             
             var regex = /[\(\)\[\]:;#@\^\|\?\",<>\!\\_=\+\*~`\.\{\}']/g;
@@ -224,6 +219,7 @@ class Product
 		try
 		{
 					console.log("current input: " + $(this.txt).val());
+					this.getInput();
 					this.resetCanvas();
 					//update text
 				  this.textFactory(this.svg, $(this.txt).val(), $(this.selTwo).prop("selectedIndex"));
@@ -244,6 +240,9 @@ class Product
             {
                 try 
                 {
+									  this.getInput()
+									  this.getSelAccent();
+             				this.getSelAlloy();
 										this.interactivity();
                 } 
                 catch (e) 
@@ -255,11 +254,14 @@ class Product
             {
                 try 
                 {
+									  this.getInput()
+									  this.getSelAccent();
+             				this.getSelAlloy();
 										this.interactivity();
                 } 
                 catch (e) 
                 {
-                    console.log("txtMotif: "+e);
+                    console.log("render: "+e);
                 }
             });
     }
@@ -268,9 +270,9 @@ class Product
     {
 		if($("#canvas").length > 0)
 		{
-				this.getInput();
-				this.getSelAccent();
-				this.getSelAlloy();
+// 				this.getInput();
+// 				this.getSelAccent();
+// 				this.getSelAlloy();
 				this.loadSvg();
 				this.render();
 		}
