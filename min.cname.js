@@ -223,8 +223,10 @@ class Product
 	{
 		try
 		{
-// 					console.log("current input: " + $(this.txt).val());
-// 					this.getInput();
+					this.getInput()
+					this.getSelAlloy();
+					this.getSelAccent();
+			
 					this.resetCanvas();
 					//update text
 				  this.textFactory(this.svg, $(this.txt).val(), $(this.selTwo).prop("selectedIndex"));
@@ -245,28 +247,22 @@ class Product
             {
                 try 
                 {
-									  this.getInput()
-									  this.getSelAccent();
-             				this.getSelAlloy();
 										this.interactivity();
                 } 
                 catch (e) 
                 {
-                    console.log("render: "+e);
+                    console.log("render: " + e);
                 }
             })
             .bind("change",$(this.selOne),(evt)=> 
             {
                 try 
                 {
-									  this.getInput()
-									  this.getSelAccent();
-             				this.getSelAlloy();
 										this.interactivity();
                 } 
                 catch (e) 
                 {
-                    console.log("render: "+e);
+                    console.log("render: " + e);
                 }
             });
     }
