@@ -7,7 +7,7 @@ class Product
         this.hasCanvas = false;
         this.canvas = null;
         this.ctx = null; 
-        this.w = 400;
+        this.w = 350;
 				this.h = 150;
         this.svg = null;
         this.ns = "http://www.w3.org/2000/svg";
@@ -293,7 +293,7 @@ class Item
 		
 		.concat("</defs>")
 		
-		.concat("<g><text id='txt1' style='font-size:25;stroke:none;text-anchor:middle;font-family:wz_bname' filter='url(#Bevel)' fill='#bbb100' transform='matrix(1 0 0 1 200 90)' >Cara</text></g>")
+		.concat("<g><text id='txt1' style='font-size:25;stroke:none;text-anchor:middle;font-family:wz_bname' filter='url(#Bevel)' fill='#bbb100' transform='matrix(1 0 0 1 200 90)' >Nina</text></g>")
 		.concat("</svg>");
 	}	
 }
