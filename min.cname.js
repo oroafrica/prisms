@@ -45,7 +45,7 @@ class Product
 				try
 				{
 						this.txt = $("*[title='Max 10 characters with first in Caps']");
-					console.log($("input [type=text]").length);
+					console.log($("input[type=text]").length);
 					 //this.txt = $("#option_2862_1525"); 
 					 //if(this.txt === 'undefined'){this.txt = $("*[title='Max 10 characters with first in Caps']");}
 				}
@@ -64,7 +64,7 @@ class Product
      		}
 				catch(e)
 				{
-						console.log(e);
+						console.log("getAccent" + e);
 				}
     }
     getSelAlloy()
@@ -83,7 +83,7 @@ class Product
 					}
 					catch(e)
 					{
-							console.log(e);
+							console.log("getAlloy: " + e);
 					}
     }
     clsCanvas()
