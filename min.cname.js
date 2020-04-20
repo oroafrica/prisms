@@ -44,8 +44,9 @@ class Product
     {
 				try
 				{
-					 this.txt = $("#option_2862_1525"); 
-					 if(this.txt === 'undefined'){this.txt = $("*[title='Max 10 characters with first in Caps']");}
+						this.txt = $("*[title='Max 10 characters with first in Caps']");
+					 //this.txt = $("#option_2862_1525"); 
+					 //if(this.txt === 'undefined'){this.txt = $("*[title='Max 10 characters with first in Caps']");}
 				}
 				catch(e)
 				{
@@ -64,8 +65,7 @@ class Product
 				{
 						console.log(e);
 				}
-     }
-	
+    }
     getSelAlloy()
     {
 				try
@@ -85,7 +85,6 @@ class Product
 							console.log(e);
 					}
     }
-
     clsCanvas()
     {
 				try
@@ -107,13 +106,12 @@ class Product
             this.clsCanvas();
         }
     }
-    
     textFactory(svgDoc, inputName, selectEndOne)
     {
         try 
         {
 					  if(selectEndOne === 'undefined'){selectEndOne = 0; console.log("selectEndOne: " + selectEndOne);}
-					  if(inputName === 'undefined'){inputName = "Cara";}
+					  if(inputName === 'undefined'){inputName = "Cara";console.log("my input: " + inputName)}
             //suffix map
             var SUFFIX = {0:61, 1:60091, 2:60040, 3:60123};
             const x = 60000;
@@ -170,7 +168,6 @@ class Product
             console.log("textFactory: " + e);
         }
     }
-    
     drawSvg(svgDoc)
     {
         try 
@@ -192,7 +189,6 @@ class Product
             console.log("drawSvg: "+e);
         }
     }
-    
 	alloyColor(selTwo)
 	{
 		try
@@ -206,7 +202,6 @@ class Product
 			console.log("alloyColor: " + e);
 		}
 	}
-	
 	interactivity()
 	{
 		try
@@ -229,8 +224,8 @@ class Product
 			 console.log("interactivity: " + e);
 		}
 	}
-    render()
-    {           
+   render()
+   {           
         $(document)
             .on("keyup",$(this.txt),(evt)=>
             {
