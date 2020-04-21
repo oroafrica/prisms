@@ -13,7 +13,7 @@ class Product
         this.ns = "http://www.w3.org/2000/svg";
         this._title = $(document).find("title").text();
 		
-				this.txt =  $("*[title='Max 10 characters with first in Caps']");
+				this.txt =  $("*[title='Enter your name']");
 				this.selOne = null;
 				this.selTwo = null;
     }
@@ -33,7 +33,7 @@ class Product
 						this.svg = parser.parseFromString(msg,"image/svg+xml");
 						this.drawSvg(this.svg);   
 
-						console.log("SVG Loaded");
+						console.log("SVG Loaded at: " + this._title);
 					}
 					catch(e)
 					{
@@ -44,7 +44,7 @@ class Product
     {
 				try
 				{
-						this.txt = $("*[title='Max 10 characters with first in Caps']");
+						this.txt = $("*[title='Enter your name']");
 					console.log($("input[type=text]").length);
 					 //this.txt = $("#option_2862_1525"); 
 					 //if(this.txt === 'undefined'){this.txt = $("*[title='Max 10 characters with first in Caps']");}
