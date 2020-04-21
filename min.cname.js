@@ -44,7 +44,7 @@ class Product
     {
 				try
 				{
-						this.txt = $("*[title='Enter your name']");
+						this.txt = $("*[title='Enter your name here']");
 					console.log($("input[type=text]").length);
 					 //this.txt = $("#option_2862_1525"); 
 					 //if(this.txt === 'undefined'){this.txt = $("*[title='Max 10 characters with first in Caps']");}
