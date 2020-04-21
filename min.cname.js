@@ -13,7 +13,7 @@ class Product
         this.ns = "http://www.w3.org/2000/svg";
         this._title = $(document).find("title").text();
 		
-				this.txt =  $("*[title='Enter your name']");
+				this.txt =  $("*[title='Enter your name here']");
 				this.selOne = null;
 				this.selTwo = null;
     }
