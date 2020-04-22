@@ -129,7 +129,7 @@ class Product
             {
                 return;
             }
-						else if(inputName === "Max10characterswithfirstinCaps")
+						else if(inputName === 'Enter your name here')
 						 {
 								return;
 						 }    
