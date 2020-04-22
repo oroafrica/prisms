@@ -24,6 +24,7 @@ class Product
     {
 				 try
 				 {
+					  console.log(this._title);
 						this.canvas = $("canvas").get(0);
 						this.ctx = this.canvas.getContext("2d");
 
@@ -45,9 +46,8 @@ class Product
 				try
 				{
 						this.txt = $("*[title='Enter your name here']");
-						console.log($("input[type=text]").length);
+						//console.log($("input[type=text]").length);
 					 //this.txt = $("#option_2862_1525"); 
-					 //if(this.txt === 'undefined'){this.txt = $("*[title='Max 10 characters with first in Caps']");}
 				}
 				catch(e)
 				{
@@ -214,7 +214,6 @@ class Product
 					this.resetCanvas();
 					//update text
 				  this.textFactory(this.svg, $(this.txt).val(), $(this.selOne).prop("selectedIndex"));
-// 			    this.textFactory(this.svg, $(this.txt).val(), 0);
 			    //update alloy
 					this.alloyColor($(this.selTwo).prop("selectedIndex"));
 					//paint canvas
