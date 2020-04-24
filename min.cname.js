@@ -194,7 +194,7 @@ class Product
 	{
 		try
 		{
-			var alloy = {0:"#b4b4b4",1:"#b4b4b4", 2:"#bbb100", 3:"#e0afbc", 4:"#a3a3a3"};
+			var alloy = {0:"#b4b4b4",1:"#b4b4b4", 2:"#CEB878", 3:"#EBC6C3", 4:"#a3a3a3"};;//{0:"#b4b4b4",1:"#b4b4b4", 2:"#bbb100", 3:"#e0afbc", 4:"#a3a3a3"};
 			let _target = this.svg.getElementsByTagName("text")[0];
 			_target.style.fill = alloy[selTwo];
 		}
